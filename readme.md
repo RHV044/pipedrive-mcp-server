@@ -11,29 +11,53 @@ This is a Model Context Protocol (MCP) server that connects to the Pipedrive API
 
 ## Setup
 
+### Using Docker (Recommended)
+
+1. Clone this repository
+2. Copy `.env.example` to `.env` and add your Pipedrive API token:
+   ```
+   cp .env.example .env
+   ```
+3. Build and run with Docker Compose:
+   ```
+   docker-compose up -d
+   ```
+
+### Manual Setup
+
 1. Clone this repository
 2. Install dependencies:
    ```
    npm install
    ```
-3. Create a `.env` file in the root directory with your Pipedrive API token:
+3. Create a `.env` file with your Pipedrive API token:
    ```
    PIPEDRIVE_API_TOKEN=your_api_token_here
    ```
-4. Build the project:
+4. Build and start:
    ```
    npm run build
-   ```
-5. Start the server:
-   ```
    npm start
    ```
 
 ## Using with Claude
 
-To use this server with Claude for Desktop:
+### With Docker
+Configure Claude for Desktop by editing your `claude_desktop_config.json`:
 
-1. Configure Claude for Desktop by editing your `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "pipedrive": {
+      "command": "docker",
+      "args": ["exec", "-i", "pipedrive-mcp-server", "node", "build/index.js"]
+    }
+  }
+}
+```
+
+### Without Docker
+Configure Claude for Desktop by editing your `claude_desktop_config.json`:
 
 ```json
 {
@@ -49,8 +73,7 @@ To use this server with Claude for Desktop:
 }
 ```
 
-2. Restart Claude for Desktop
-3. In the Claude application, you should now see the Pipedrive tools available
+Restart Claude for Desktop to see the Pipedrive tools available
 
 ## Available Tools
 

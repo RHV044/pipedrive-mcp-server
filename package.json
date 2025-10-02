@@ -12,7 +12,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.7.1",
     "dotenv": "^16.4.7",
-    "pipedrive": "^22.10.1",
+    "pipedrive": "^29.2.4",
     "ts-node": "^10.9.2",
     "zod": "^3.22.4"
   },

@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  pipedrive-mcp:
+    build: .
+    image: rhv044/pipedrive-mcp-server:latest
+    container_name: pipedrive-mcp-server
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
